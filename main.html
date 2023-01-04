@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MF Bangalore Hub</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"
+        id="bootstrap-css">
+    <style>
+        .register .nav-tabs .nav-link:hover {
+            border: none;
+        }
+
+
+        .text-align {
+            text-align: left;
+            margin-bottom: 25px;
+
+            padding: 10%;
+            margin-left: 30%;
+        }
+
+        .form-new {
+            margin-right: 20%;
+            margin-left: 20%;
+        }
+
+        .register-heading {
+            margin-left: 21%;
+            margin-bottom: 10%;
+            color: #020a12;
+        }
+
+        .register-heading h1 {
+            margin-left: 21%;
+            margin-bottom: 10%;
+            color: #e9ecef;
+        }
+
+        .register {
+            background: radial-gradient(#ffdda9, #ef8c71);
+            background-size: cover;
+            font-family: 'Vijaya';
+            text-align: center; 
+            font-size: larger;
+            color:darkblue;
+            background-position: 100%;
+        }
+
+        .btnSubmit {
+            background-color: #f1e483;
+            border: 1px solid rgb(255, 255, 255);
+            border-radius: 2px;
+            font-family: inherit;
+            font-size: 21px;
+            display: block;
+            width: 100%;
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+
+        .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    
+    <div class="container register">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tab-pane fade show active text-align form-new" id="home" role="tabpanel"
+                    aria-labelledby="home-tab">
+                    <img src="https://meltonfoundation.org/wp-content/uploads/2021/09/Melton_30th_Gold_NoBG.png" alt="MF Logo" , width="500"
+                        height="150", class="centre">
+                    <h3 class="register-heading"><br>Feel free to share your mental and sexual health queries here with us anounymously.</br></h3>
+                    <div class="row register-form">
+                        <div class="col-md-12">
+                            <form method="post" autocomplete="off" name="google-sheet">
+                            <div class="form-group">
+                                <input type="text" name="Contact" class="form-control" placeholder="Contact" value="" required="" />
+                            </div>
+                                <div class="form-group">
+                                    <input type="text" name="Age" class="form-control" placeholder="Age"
+                                        value="" required="" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="Describe Yourself" class="form-control" placeholder="Describe Yourself" value="" required="" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="What Mental Health or Sexual Health issues are you facing" class="form-control" placeholder="What Mental Health or Sexual Health issues are you facing" value="" required="" />
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="submit" name="submit" class="btnSubmit btn-block" value="Submit" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxDkdn8YQyFqy5RtV24kAt8D8ntV68OsBUbAcnf2VtosCLiNkoTdQ7nfSO4Zh-zfgd9/exec'
+        const form = document.forms['google-sheet']
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => alert("Thanks for reaching out to us in Melton Foundation. A medical professional will soon reach out to you with a solution to your query :)"))
+                .catch(error => console.error('Error!', error.message))
+        })
+    </script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+
+</html>
